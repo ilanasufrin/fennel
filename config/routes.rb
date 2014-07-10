@@ -7,4 +7,6 @@ Rails.application.routes.draw do
     get "/signout", to: "sessions#destroy", as: "signout"
     get "/failure", to: redirect("/")
   end
+
+  resources :users, except: [:create, :destroy]
 end

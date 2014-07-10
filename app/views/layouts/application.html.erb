@@ -12,7 +12,8 @@
   <% unless current_user %>
     <%= link_to "Log in with the Goog", "/auth/google_oauth2" %>
   <% else %>
-    <%= link_to "Log out!", "/auth/signout" %>
+    Hi, <%= current_user.name %>!
+    <%= link_to "Log out?", "/auth/signout" %>
   <% end %>
 </p>
 
