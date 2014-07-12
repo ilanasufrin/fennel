@@ -3,6 +3,10 @@ class Item < ActiveRecord::Base
 
   validates_attachment_content_type :photo, content_type: /\Aimage\/.*\Z/
 
+  validates :description, presence: true
+  validates :location, presence: true
+  validates :photo, presence: true
+
   has_many :offers
 
   belongs_to :user
