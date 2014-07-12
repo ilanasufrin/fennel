@@ -9,5 +9,7 @@ Rails.application.routes.draw do
   end
 
   resources :users, except: [:create, :destroy]
-  resources :items
+  resources :items do
+    resources :offers, only: [:show, :update]
+  end
 end

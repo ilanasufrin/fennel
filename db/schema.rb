@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712154608) do
+ActiveRecord::Schema.define(version: 20140712175017) do
 
   create_table "items", force: true do |t|
     t.string   "location"
@@ -25,22 +25,25 @@ ActiveRecord::Schema.define(version: 20140712154608) do
     t.datetime "photo_updated_at"
     t.decimal  "latitude"
     t.decimal  "longitude"
+    t.integer  "status",             default: 0
   end
 
   add_index "items", ["latitude", "longitude"], name: "index_items_on_latitude_and_longitude"
+  add_index "items", ["status"], name: "index_items_on_status"
   add_index "items", ["user_id"], name: "index_items_on_user_id"
 
   create_table "offers", force: true do |t|
-    t.integer  "item_id",      null: false
-    t.integer  "owner_id",     null: false
-    t.integer  "recipient_id", null: false
-    t.string   "status"
+    t.integer  "item_id",                              null: false
+    t.integer  "owner_id",                             null: false
+    t.integer  "recipient_id",                         null: false
+    t.integer  "status",       limit: 255, default: 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "offers", ["owner_id"], name: "index_offers_on_owner_id"
   add_index "offers", ["recipient_id"], name: "index_offers_on_recipient_id"
+  add_index "offers", ["status"], name: "index_offers_on_status"
 
   create_table "users", force: true do |t|
     t.string   "email",         null: false

@@ -30,4 +30,8 @@ class User < ActiveRecord::Base
     user.save(validate: false)
     user
   end
+
+  def current_offer
+    j.offers.open.first
+  end
 end

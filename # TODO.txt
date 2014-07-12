@@ -8,3 +8,10 @@ match item -> user
   whenever a new user joins (random item, specific user)
 
 Item.close_to(posx, posy) scope
+
+user opt out
+user ratings
+user badges
+neighborhood conversations
+map view for sure
+specify availability
