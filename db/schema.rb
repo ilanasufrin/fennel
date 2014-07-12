@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710004728) do
+ActiveRecord::Schema.define(version: 20140712012545) do
+
+  create_table "items", force: true do |t|
+    t.string   "location"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "items", ["location"], name: "index_items_on_location"
+
+  create_table "offers", force: true do |t|
+    t.integer  "item_id",      null: false
+    t.integer  "owner_id",     null: false
+    t.integer  "recipient_id", null: false
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "offers", ["owner_id"], name: "index_offers_on_owner_id"
+  add_index "offers", ["recipient_id"], name: "index_offers_on_recipient_id"
 
   create_table "users", force: true do |t|
     t.string   "email",        null: false
@@ -25,5 +46,7 @@ ActiveRecord::Schema.define(version: 20140710004728) do
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["location"], name: "index_users_on_location"
+  add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
 
 end

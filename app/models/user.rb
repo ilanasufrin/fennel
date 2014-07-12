@@ -3,6 +3,15 @@ class User < ActiveRecord::Base
 
   # Phone number: /\d+{10}/, allow blank, remove dashes
 
+  has_many :items,
+    class_name: "Item"
+
+  has_many :received_offers,
+    class_name: "Offer"
+
+  has_many :offers,
+    class_name: "Offer"
+
   def self.from_omniauth(auth)
     User.where(auth.slice("provider", "uid")).first || create_from_omniauth(auth)
   end
