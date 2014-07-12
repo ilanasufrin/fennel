@@ -1,0 +1,13 @@
+# TODO
+
+users can post items
+  Item#new, Item#create
+
+match item -> user
+  Item.without_offer scope
+  User.without_offer scope
+  whenever an offer is rejected (specific item, random user)
+  whenever an item is posted (specific item, random user)
+  whenever a new user joins (random item, specific user)
+
+Item.close_to(posx, posy) scope
