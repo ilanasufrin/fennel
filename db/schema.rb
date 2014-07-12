@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712014819) do
+ActiveRecord::Schema.define(version: 20140712145454) do
 
   create_table "items", force: true do |t|
     t.string   "location"
@@ -41,7 +41,7 @@ ActiveRecord::Schema.define(version: 20140712014819) do
   add_index "offers", ["recipient_id"], name: "index_offers_on_recipient_id"
 
   create_table "users", force: true do |t|
-    t.string   "email",        null: false
+    t.string   "email",         null: false
     t.string   "name"
     t.string   "location"
     t.datetime "created_at"
@@ -49,6 +49,7 @@ ActiveRecord::Schema.define(version: 20140712014819) do
     t.string   "provider"
     t.string   "uid"
     t.string   "phone_number"
+    t.string   "session_token"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

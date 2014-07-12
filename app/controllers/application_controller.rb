@@ -4,8 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
   def current_user
-    # Holy crap this is bad, use a random session token
-    @current_user ||= User.find(session[:user_id]) if session[:user_id]
+    @current_user ||= User.where(session_token: session[:session_token]).first
   end
   helper_method :current_user
 end
