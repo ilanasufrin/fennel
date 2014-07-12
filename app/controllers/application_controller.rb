@@ -7,4 +7,8 @@ class ApplicationController < ActionController::Base
     @current_user ||= User.where(session_token: session[:session_token]).first
   end
   helper_method :current_user
+
+  def ensure_logged_in_user
+    redirect_to root_path unless !!current_user
+  end
 end

@@ -1,0 +1,15 @@
+<h2>Let's offer some stuff.</h2>
+
+<!-- <form action="<%= items_path %>" method="POST">
+  <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+  <label>Description:</label>
+
+  <label>Photo:</label>
+</form> -->
+
+<%= form_for @item, html: { multipart: true } do |f| %>
+  <label>Description: <%= f.text_field :description %></label><br>
+  <label>Location: <%= f.text_field :location %></label><br>
+  <label>Photo: <%= f.file_field :photo %></label><br>
+  <%= f.submit %>
+<% end %>
