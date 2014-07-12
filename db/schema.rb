@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140712145454) do
+ActiveRecord::Schema.define(version: 20140712154608) do
 
   create_table "items", force: true do |t|
     t.string   "location"
@@ -23,9 +23,11 @@ ActiveRecord::Schema.define(version: 20140712145454) do
     t.string   "photo_content_type"
     t.integer  "photo_file_size"
     t.datetime "photo_updated_at"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
   end
 
-  add_index "items", ["location"], name: "index_items_on_location"
+  add_index "items", ["latitude", "longitude"], name: "index_items_on_latitude_and_longitude"
   add_index "items", ["user_id"], name: "index_items_on_user_id"
 
   create_table "offers", force: true do |t|
@@ -50,10 +52,12 @@ ActiveRecord::Schema.define(version: 20140712145454) do
     t.string   "uid"
     t.string   "phone_number"
     t.string   "session_token"
+    t.decimal  "latitude"
+    t.decimal  "longitude"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["location"], name: "index_users_on_location"
+  add_index "users", ["latitude", "longitude"], name: "index_users_on_latitude_and_longitude"
   add_index "users", ["provider", "uid"], name: "index_users_on_provider_and_uid", unique: true
+  add_index "users", ["session_token"], name: "index_users_on_session_token"
 
 end
