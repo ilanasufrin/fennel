@@ -1,8 +1,5 @@
 # TODO
 
-users can post items
-  Item#new, Item#create
-
 match item -> user
   Item.without_offer scope
   User.without_offer scope

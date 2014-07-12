@@ -7,6 +7,7 @@ gem 'rails', '4.1.1'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'paperclip', "~> 4.1"
+gem 'httpclient'
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3'
